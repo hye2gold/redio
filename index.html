@@ -28,14 +28,11 @@ window.RD_MIXPANEL_TOKEN = '07335987a93081be5b0f098bb28b0f73';
   window.rdTrack = function (name, props) { try { if (window.mixpanel && window.mixpanel.track) window.mixpanel.track(name, props || {}); else q.push([name, props || {}]); } catch (e) {} };
   var token = window.RD_MIXPANEL_TOKEN;
   if (!token) return;
-  var s = document.createElement('script'); s.async = true; s.src = 'https://cdn.mxpnl.com/libs/mixpanel-2-latest.min.js';
-  s.onload = function () {
-    try {
-      window.mixpanel.init(token, { track_pageview: true, persistence: 'localStorage', ip: false });
-      q.forEach(function (e) { window.mixpanel.track(e[0], e[1]); }); q = [];
-    } catch (e) {}
-  };
-  document.head.appendChild(s);
+  (function(f,b){if(!b.__SV){var e,g,i,h;window.mixpanel=b;b._i=[];b.init=function(e,f,c){function g(a,d){var b=d.split(".");2==b.length&&(a=a[b[0]],d=b[1]);a[d]=function(){a.push([d].concat(Array.prototype.slice.call(arguments,0)))}}var a=b;"undefined"!==typeof c?a=b[c]=[]:c="mixpanel";a.people=a.people||[];a.toString=function(a){var d="mixpanel";"mixpanel"!==c&&(d+="."+c);a||(d+=" (stub)");return d};a.people.toString=function(){return a.toString(1)+".people (stub)"};i="disable time_event track track_pageview track_links track_forms track_with_groups add_group set_group remove_group register register_once alias unregister identify name_tag set_config reset opt_in_tracking opt_out_tracking has_opted_in_tracking has_opted_out_tracking clear_opt_in_out_tracking start_batch_senders people.set people.set_once people.unset people.increment people.append people.union people.track_charge people.clear_charges people.delete_user people.remove".split(" ");for(h=0;h<i.length;h++)g(a,i[h]);var j="set set_once union unset remove delete".split(" ");a.get_group=function(){function b(c){d[c]=function(){var call2_args=arguments;var call2=[c].concat(Array.prototype.slice.call(call2_args,0));a.push([e,call2])}}for(var d={},e=["get_group"].concat(Array.prototype.slice.call(arguments,0)),c=0;c<j.length;c++)b(j[c]);return d};b._i.push([e,f,c])};b.__SV=1.2;e=f.createElement("script");e.type="text/javascript";e.async=!0;e.src="https://cdn.mxpnl.com/libs/mixpanel-2-latest.min.js";g=f.getElementsByTagName("script")[0];g.parentNode.insertBefore(e,g)}})(document,window.mixpanel||[]);
+  try {
+    window.mixpanel.init(token, { track_pageview: true, persistence: 'localStorage', ip: false });
+    q.forEach(function (e) { window.mixpanel.track(e[0], e[1]); }); q = [];
+  } catch (e) {}
 })();
 </script>
 <link rel="icon" href="data:image/svg+xml,%3Csvg%20xmlns%3D%22http%3A%2F%2Fwww.w3.org%2F2000%2Fsvg%22%20viewBox%3D%220%200%2064%2064%22%3E%3Crect%20width%3D%2264%22%20height%3D%2264%22%20rx%3D%2216%22%20fill%3D%22%234D66FF%22%2F%3E%3Cpath%20d%3D%22M22%2018h12a10%2010%200%200%201%203%2019.5L44%2046h-8.5l-6-8H29v8h-7z%20M29%2024v8h5a4%204%200%200%200%200-8z%22%20fill%3D%22%23fff%22%2F%3E%3C%2Fsvg%3E" type="image/svg+xml">
